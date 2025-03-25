@@ -1,0 +1,70 @@
+﻿<Window x:Class="TI2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Потоковое шифрование (LFSR)" Height="600" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Файловые операции -->
+        <GroupBox Grid.Row="0" Header="Файловые операции" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Открыть файл" Width="100" Margin="5" Click="OpenFile_Click"/>
+                <Button Content="Сохранить файл" Width="100" Margin="5" Click="SaveFile_Click"/>
+                <TextBlock x:Name="FilePathText" Margin="5" VerticalAlignment="Center"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Настройки ключа -->
+        <GroupBox Grid.Row="1" Header="Ключ" Margin="0,0,0,10">
+            <StackPanel>
+                <TextBox x:Name="KeyInput" Margin="5" 
+                         ToolTip="Введите начальное значение регистра (только 0 и 1)"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Управление шифрованием -->
+        <GroupBox Grid.Row="2" Header="Шифрование" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Обработать" Width="100" Margin="5" Click="Encrypt_Click"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Исходные данные -->
+        <GroupBox Grid.Row="3" Header="Исходные данные" Margin="0,0,0,10">
+            <ScrollViewer>
+                <TextBox x:Name="OriginalDataOutput" Margin="5" 
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"
+                         IsEnabled="True" KeyUp="OriginalDataOutput_KeyDown"/>
+            </ScrollViewer>
+        </GroupBox>
+
+        <!-- Вывод битов ключа -->
+        <GroupBox Grid.Row="4" Header="Биты ключа" Margin="0,0,0,10">
+            <ScrollViewer>
+                <TextBox x:Name="KeyBitsOutput" Margin="5" 
+                         IsReadOnly="True" 
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"/>
+            </ScrollViewer>
+        </GroupBox>
+
+        <!-- Вывод зашифрованных битов -->
+        <GroupBox Grid.Row="5" Header="Результат шифрования">
+            <ScrollViewer>
+                <TextBox x:Name="EncryptedBitsOutput" Margin="5" 
+                         IsReadOnly="True" 
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"/>
+            </ScrollViewer>
+        </GroupBox>
+    </Grid>
+</Window>
